@@ -14,17 +14,27 @@
 
         <Border Grid.Column="0" Margin="2" Background="Thistle" Width="250" HorizontalAlignment="Center" BorderThickness="3" BorderBrush="Gray">
             <StackPanel Orientation="Vertical">
-                <Button Name="BtnHome" Margin="20,30" Background="#3E454C" Height="50" Foreground="White" FontSize="25">Home</Button>
-                <Button Name="BtnEmployees" Margin="20,30" Background="#3E454C" Height="50" Foreground="White" FontSize="25">Employees</Button>
-                <Button Name="BtnCustomers" Margin="20,30" Background="#3E454C" Height="50" Foreground="White" FontSize="25">Customers</Button>
-                <Button Name="BtnProducts" Margin="20,30" Background="#3E454C" Height="50" Foreground="White" FontSize="25">Products</Button>
+                <Button Name="BtnHome" Click="BtnHome_Click" Margin="20,30" Background="#3E454C" Height="50" Foreground="White" FontSize="25">Home</Button>
+                <Button Name="BtnEmployees" Click="BtnEmployees_Click" Margin="20,30" Background="#3E454C" Height="50" Foreground="White" FontSize="25">Employees</Button>
+                <Button Name="BtnCustomers" Click="BtnCustomers_Click" Margin="20,30" Background="#3E454C" Height="50" Foreground="White" FontSize="25">Customers</Button>
+                <Button Name="BtnProducts" Click="BtnProducts_Click" Margin="20,30" Background="#3E454C" Height="50" Foreground="White" FontSize="25">Products</Button>
                 <Image Margin="10,40" Height="200" Width="200" Source="Resources/ProductManagement.png"/>
             </StackPanel>
         </Border>
-        <Border Name="HomePanel" Grid.Column="1" Margin="2" Background="IndianRed" HorizontalAlignment="Stretch"  BorderThickness="3" BorderBrush="Gray">
+        <Border Name="HomePanel" Grid.Column="1" Visibility="Visible" Margin="2" Background="IndianRed" HorizontalAlignment="Stretch"  BorderThickness="3" BorderBrush="Gray">
             <StackPanel HorizontalAlignment="Stretch">
                 <Label FontSize="35" Margin="0,50,0,0" Foreground="#3E454C" FontWeight="Heavy" HorizontalAlignment="Center">Welcome to arash management app</Label>
             </StackPanel>
+        </Border>
+
+        <Border Name="EmployeesPanel" Grid.Column="1" Visibility="Collapsed" Margin="2" Background="IndianRed" HorizontalAlignment="Stretch"  BorderThickness="3" BorderBrush="Gray">
+            <Label FontSize="35" Margin="0,50,0,0" Foreground="#3E454C" FontWeight="Heavy" HorizontalAlignment="Center">WE ARE IN EMPLOYEES</Label>
+        </Border>
+        <Border Name="CustomersPanel" Grid.Column="1" Visibility="Collapsed" Margin="2" Background="IndianRed" HorizontalAlignment="Stretch"  BorderThickness="3" BorderBrush="Gray">
+            <Label FontSize="35" Margin="0,50,0,0" Foreground="#3E454C" FontWeight="Heavy" HorizontalAlignment="Center">WE ARE IN CUSTOMRES</Label>
+        </Border>
+        <Border Name="ProductsPanel" Grid.Column="1" Visibility="Collapsed" Margin="2" Background="IndianRed" HorizontalAlignment="Stretch"  BorderThickness="3" BorderBrush="Gray">
+            <Label FontSize="35" Margin="0,50,0,0" Foreground="#3E454C" FontWeight="Heavy" HorizontalAlignment="Center">WE ARE IN PRODUCTS</Label>
         </Border>
     </Grid>
 </Window>

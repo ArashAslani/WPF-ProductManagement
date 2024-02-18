@@ -20,5 +20,7 @@ namespace Wpf_ProductManagement
         {
             InitializeComponent();
         }
+
+
     }
 }

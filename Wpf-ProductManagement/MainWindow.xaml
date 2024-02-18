@@ -7,7 +7,24 @@
         mc:Ignorable="d"
         Title="Product management" Height="700" Width="1200">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-
+        <Border Grid.Column="0" Margin="2" Background="Thistle" Width="250" HorizontalAlignment="Center" BorderThickness="3" BorderBrush="Gray">
+            <StackPanel Orientation="Vertical">
+                <Button Name="BtnHome" Margin="20,30" Background="#3E454C" Height="50" Foreground="White" FontSize="25">Home</Button>
+                <Button Name="BtnEmployees" Margin="20,30" Background="#3E454C" Height="50" Foreground="White" FontSize="25">Employees</Button>
+                <Button Name="BtnCustomers" Margin="20,30" Background="#3E454C" Height="50" Foreground="White" FontSize="25">Customers</Button>
+                <Button Name="BtnProducts" Margin="20,30" Background="#3E454C" Height="50" Foreground="White" FontSize="25">Products</Button>
+                <Image Margin="10,40" Height="200" Width="200" Source="Resources/ProductManagement.png"/>
+            </StackPanel>
+        </Border>
+        <Border Name="HomePanel" Grid.Column="1" Margin="2" Background="IndianRed" HorizontalAlignment="Stretch"  BorderThickness="3" BorderBrush="Gray">
+            <StackPanel HorizontalAlignment="Stretch">
+                <Label FontSize="35" Margin="0,50,0,0" Foreground="#3E454C" FontWeight="Heavy" HorizontalAlignment="Center">Welcome to arash management app</Label>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>

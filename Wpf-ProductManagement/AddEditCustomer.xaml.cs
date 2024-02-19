@@ -61,7 +61,7 @@ namespace Wpf_ProductManagement
                     Address = TBAddress.Text,
                     PhoneNumber = Convert.ToUInt64(TBPhoneNumber.Text),
                 };
-                CustomerDataAccess.
+                _customerDataAccess.EditCustomer(customer);
             }
         }
     }

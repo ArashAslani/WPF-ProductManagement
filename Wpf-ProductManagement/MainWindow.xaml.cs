@@ -91,7 +91,7 @@ namespace Wpf_ProductManagement
 
         private void BtnEditEmployee_Click(object sender, RoutedEventArgs e)
         {
-            if (EmployeesDataGrid.SelectedIndex > 0)
+            if (EmployeesDataGrid.SelectedIndex >= 0)
             {
                 CurrentEmployee = (Employee)EmployeesDataGrid.SelectedItem;
                 AddEditEmployee addEditEmployee = new(_employeeDataAccess, CurrentEmployee);
@@ -101,7 +101,7 @@ namespace Wpf_ProductManagement
 
         private void BtnRemoveEmployee_Click(object sender, RoutedEventArgs e)
         {
-            if(EmployeesDataGrid.SelectedIndex > 0)
+            if(EmployeesDataGrid.SelectedIndex >= 0)
             {
                 CurrentEmployee = (Employee)EmployeesDataGrid.SelectedItem;
                 _employeeDataAccess.RemoveEmployee(CurrentEmployee.Id);
@@ -126,7 +126,7 @@ namespace Wpf_ProductManagement
 
         private void BtnEditCustomer_Click(object sender, RoutedEventArgs e)
         {
-            if(CustomersDataGrid.SelectedIndex > 0)
+            if(CustomersDataGrid.SelectedIndex >= 0)
             {
                 CurrentCustomer = (Customer)CustomersDataGrid.SelectedItem;
                 AddEditCustomer addEditCustomer = new(_customerDataAccess, CurrentCustomer);
@@ -162,7 +162,7 @@ namespace Wpf_ProductManagement
 
         private void BtnEditProduct_Click(object sender, RoutedEventArgs e)
         {
-            if (ProductsDataGrid.SelectedIndex > 0)
+            if (ProductsDataGrid.SelectedIndex >= 0)
             {
                 CurrentProduct = (Product)ProductsDataGrid.SelectedItem;
                 AddEditProduct addEditProduct = new(_productDataAccess, CurrentProduct);

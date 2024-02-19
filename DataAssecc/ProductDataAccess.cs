@@ -12,24 +12,24 @@ namespace DataAccess
             GetProducts();
         }
 
-        private void GetProducts()
+        public void GetProducts()
         {
             throw new NotImplementedException();
         }
 
-        private void AddProduct(Product product)
+        public void AddProduct(Product product)
         {
             Products.Add(product);
         }
 
-        private void EditProduct(Product product)
+        public void EditProduct(Product product)
         {
             var lastProduct = Products.FirstOrDefault(x => x.Id == product.Id);
             int index = Products.IndexOf(lastProduct);
             Products[index] = product;
         }
 
-        private void RemoveProduct(int id)
+        public void RemoveProduct(int id)
         {
             var product = Products.FirstOrDefault(x=>x.Id == id);
             Products.Remove(product);

@@ -1,24 +1,10 @@
 ﻿using DataAccess;
 using DataAccess.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Wpf_ProductManagement
 {
-    /// <summary>
-    /// Interaction logic for AddEditCustomer.xaml
-    /// </summary>
+
     public partial class AddEditCustomer : Window
     {
         private readonly CustomerDataAccess _customerDataAccess;
@@ -63,6 +49,20 @@ namespace Wpf_ProductManagement
                 };
                 _customerDataAccess.EditCustomer(customer);
             }
+            else
+            {
+                Customer customer = new()
+                {
+                    Id = _customerDataAccess.GetNextId(),
+                    FirstName = TBFirstName.Text,
+                    LastName = TBLastName.Text,
+                    Address = TBAddress.Text,
+                    PhoneNumber = Convert.ToUInt64(TBPhoneNumber.Text),
+                };
+                _customerDataAccess.AddCustomer(customer);
+            }
+
+            this.Close();
         }
     }
 }

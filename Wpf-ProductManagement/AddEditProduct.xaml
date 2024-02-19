@@ -1,0 +1,33 @@
+﻿<Window x:Class="Wpf_ProductManagement.AddEditProduct"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_ProductManagement"
+        mc:Ignorable="d"
+        Title="AddEditProduct" Height="450" Width="800" FontSize="24">
+    <Grid>
+        <StackPanel Margin="20">
+            <DockPanel Margin="10">
+                <Label Margin="5">Name : </Label>
+                <TextBlock Name="TBName" HorizontalAlignment="Right" Width="500"></TextBlock>
+            </DockPanel>
+            <DockPanel Margin="10">
+                <Label Margin="5">Author : </Label>
+                <TextBox Name="TBAuthor" HorizontalAlignment="Right" Width="500"></TextBox>
+            </DockPanel>
+            <DockPanel Margin="10">
+                <Label Margin="5">Price:</Label>
+                <TextBox Name="TBPrice" HorizontalAlignment="Right" Width="500"></TextBox>
+            </DockPanel>
+            <DockPanel Margin="10">
+                <Label Margin="5">Count Available:</Label>
+                <TextBox Name="TBCountAvailable" HorizontalAlignment="Right" Width="500"></TextBox>
+            </DockPanel>
+            <DockPanel Margin="20" HorizontalAlignment="Right">
+                <Button Name="BTNCancel" Click="BTNCancel_Click" Width="150" Height="50" Margin="5" Background="LightPink">Cancel</Button>
+                <Button Name="BTNOk" Click="BTNOk_Click" Width="150" Height="50" Margin="5" Background="LightGreen">Ok</Button>
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</Window>

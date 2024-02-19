@@ -17,11 +17,6 @@ using System.Windows.Shapes;
 
 namespace Wpf_ProductManagement
 {
-    /// <summary>
-    /// Interaction logic for AddEditEmployee.xaml
-    /// </summary>
-    /// 
-
     public partial class AddEditEmployee : Window
     {
         private readonly EmployeeDataAccess _employeeDataAccess;

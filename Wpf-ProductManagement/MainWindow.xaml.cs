@@ -7,9 +7,9 @@ namespace Wpf_ProductManagement
 {
     public partial class MainWindow : Window
     {
-        readonly EmployeeDataAccess employeeDataAccess = new();
-        readonly CustomerDataAccess customerDataAccess = new();
-        readonly ProductDataAccess productDataAccess = new();
+        readonly EmployeeDataAccess _employeeDataAccess = new();
+        readonly CustomerDataAccess _customerDataAccess = new();
+        readonly ProductDataAccess _productDataAccess = new();
 
         ObservableCollection<Employee> Employees = [];
         ObservableCollection<Customer> Customers = [];
@@ -31,9 +31,9 @@ namespace Wpf_ProductManagement
 
         private void FillData()
         {
-            Employees = employeeDataAccess.Employees;
-            Products = productDataAccess.Products;
-            Customers = customerDataAccess.Customers;
+            Employees = _employeeDataAccess.Employees;
+            Products = _productDataAccess.Products;
+            Customers = _customerDataAccess.Customers;
         }
 
         private void BtnHome_Click(object sender, RoutedEventArgs e)
@@ -79,7 +79,7 @@ namespace Wpf_ProductManagement
 
         private void BtnAddEmployee_Click(object sender, RoutedEventArgs e)
         {
-            AddEditEmployee addEditEmployee = new(employeeDataAccess);
+            AddEditEmployee addEditEmployee = new(_employeeDataAccess);
             addEditEmployee.ShowDialog();
         }
 
@@ -88,7 +88,7 @@ namespace Wpf_ProductManagement
             if (EmployeesDataGrid.SelectedIndex > 0)
             {
                 CurrentEmployee = (Employee)EmployeesDataGrid.SelectedItem;
-                AddEditEmployee addEditEmployee = new(employeeDataAccess, CurrentEmployee);
+                AddEditEmployee addEditEmployee = new(_employeeDataAccess, CurrentEmployee);
                 addEditEmployee.ShowDialog();
             }
         }
@@ -98,7 +98,7 @@ namespace Wpf_ProductManagement
             if(EmployeesDataGrid.SelectedIndex > 0)
             {
                 CurrentEmployee = (Employee)EmployeesDataGrid.SelectedItem;
-                employeeDataAccess.RemoveEmployee(CurrentEmployee.Id);
+                _employeeDataAccess.RemoveEmployee(CurrentEmployee.Id);
                 EmployeeLable.Content = "----";
             }
         }
@@ -114,17 +114,28 @@ namespace Wpf_ProductManagement
 
         private void BtnAddCustomer_Click(object sender, RoutedEventArgs e)
         {
-
+            AddEditCustomer addEditCustomer = new(_customerDataAccess);
+            addEditCustomer.ShowDialog();
         }
 
         private void BtnEditCustomer_Click(object sender, RoutedEventArgs e)
         {
-
+            if(CustomersDataGrid.SelectedIndex > 0)
+            {
+                CurrentCustomer = (Customer)CustomersDataGrid.SelectedItem;
+                AddEditCustomer addEditCustomer = new(_customerDataAccess, CurrentCustomer);
+                addEditCustomer.ShowDialog();
+            }
         }
 
         private void BtnRemoveCustomer_Click(object sender, RoutedEventArgs e)
         {
-
+            if(CustomersDataGrid.SelectedIndex >= 0)
+            {
+                CurrentCustomer = (Customer)CustomersDataGrid.SelectedItem;
+                _customerDataAccess.RemoveCustomer(CurrentCustomer.Id);
+                CustomerLable.Content = "----";
+            }
         }
 
 
@@ -139,17 +150,28 @@ namespace Wpf_ProductManagement
 
         private void BtnAddProduct_Click(object sender, RoutedEventArgs e)
         {
-
+            AddEditProduct addEditProduct = new(_productDataAccess);
+            addEditProduct.ShowDialog();
         }
 
         private void BtnEditProduct_Click(object sender, RoutedEventArgs e)
         {
-
+            if (ProductsDataGrid.SelectedIndex > 0)
+            {
+                CurrentProduct = (Product)ProductsDataGrid.SelectedItem;
+                AddEditProduct addEditProduct = new(_productDataAccess, CurrentProduct);
+                addEditProduct.ShowDialog();
+            }
         }
 
         private void BtnRemoveProduct_Click(object sender, RoutedEventArgs e)
         {
-
+            if (ProductsDataGrid.SelectedIndex >= 0)
+            {
+                CurrentCustomer = (Customer)ProductsDataGrid.SelectedItem;
+                _customerDataAccess.RemoveCustomer(CurrentCustomer.Id);
+                CustomerLable.Content = "----";
+            }
         }
     }
 }

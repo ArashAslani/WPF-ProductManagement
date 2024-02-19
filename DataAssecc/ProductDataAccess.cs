@@ -1,4 +1,7 @@
-﻿using DataAccess.Models;
+﻿using DataAccess.ApplicatoionDbContext;
+using DataAccess.Models;
+using DataAccess.Utilities;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 
 namespace DataAccess
@@ -14,31 +17,39 @@ namespace DataAccess
 
         public void GetProducts()
         {
-            throw new NotImplementedException();
+            using (ProductManagementDbContext dbContext = new())
+            {
+                Products = dbContext.Products.AsNoTracking().ToList().ToObservableCollection<Product>();
+            };
         }
 
         public void AddProduct(Product product)
         {
-            Products.Add(product);
+            using (ProductManagementDbContext dbContext = new())
+            {
+                dbContext.Products.Add(product);
+                dbContext.SaveChanges();
+            };
         }
 
         public void EditProduct(Product product)
         {
-            var lastProduct = Products.FirstOrDefault(x => x.Id == product.Id);
-            int index = Products.IndexOf(lastProduct);
-            Products[index] = product;
+            using (ProductManagementDbContext dbContext = new())
+            {
+                var lastProduct = dbContext.Products.First(x => x.Id == product.Id);
+                dbContext.Products.Update(lastProduct);
+                dbContext.SaveChanges();
+            };
         }
 
         public void RemoveProduct(int id)
         {
-            var product = Products.FirstOrDefault(x=>x.Id == id);
-            Products.Remove(product);
-        }
-
-        public int GetNextId()
-        {
-            var maxIndex = Products.Count != 0 ? Products.Max(x => x.Id) + 1 : 1;
-            return maxIndex;
+            using (ProductManagementDbContext dbContext = new())
+            {
+                var lastProduct = dbContext.Products.First(x => x.Id == id);
+                dbContext.Products.Remove(lastProduct);
+                dbContext.SaveChanges();
+            };
         }
     }
 }

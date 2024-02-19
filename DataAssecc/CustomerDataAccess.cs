@@ -1,4 +1,7 @@
-﻿using DataAccess.Models;
+﻿using DataAccess.ApplicatoionDbContext;
+using DataAccess.Models;
+using DataAccess.Utilities;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 
 namespace DataAccess
@@ -14,31 +17,39 @@ namespace DataAccess
 
         public void GetCustomers()
         {
-            throw new NotImplementedException();
+            using (ProductManagementDbContext dbContext = new())
+            {
+                Customers = dbContext.Customers.AsNoTracking().ToList().ToObservableCollection<Customer>();
+            };
         }
 
         public void AddCustomer(Customer customer)
         {
-            Customers.Add(customer);
+            using (ProductManagementDbContext dbContext = new())
+            {
+                dbContext.Customers.Add(customer);
+                dbContext.SaveChanges();
+            };
         }
 
         public void EditCustomer(Customer customer)
         {
-            var lastCustomer = Customers.FirstOrDefault(x => x.Id == customer.Id);
-            int index = Customers.IndexOf(lastCustomer);
-            Customers[index] = customer;
+            using (ProductManagementDbContext dbContext = new())
+            {
+                var lastCustomer = dbContext.Customers.First(x => x.Id.Equals(customer.Id));
+                dbContext.Customers.Update(lastCustomer);
+                dbContext.SaveChanges();
+            };
         }
 
         public void RemoveCustomer(int id)
         {
-            var customer = Customers.FirstOrDefault(x => x.Id == id);
-            Customers.Remove(customer);
-        }
-
-        public int GetNextId()
-        {
-            var maxIndex = Customers.Count != 0 ? Customers.Max(x => x.Id) + 1 : 1;
-            return maxIndex;
+            using (ProductManagementDbContext dbContext = new())
+            {
+                var lastCustomer = dbContext.Customers.First(x => x.Id.Equals(id));
+                dbContext.Customers.Remove(lastCustomer);
+                dbContext.SaveChanges();
+            };
         }
     }
 }

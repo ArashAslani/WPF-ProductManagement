@@ -1,6 +1,8 @@
-﻿using DataAccess.Models;
+﻿using DataAccess.ApplicatoionDbContext;
+using DataAccess.Models;
+using DataAccess.Utilities;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
-using System.Diagnostics.Metrics;
 
 namespace DataAccess
 {
@@ -15,31 +17,40 @@ namespace DataAccess
 
         public void GetEmployees()
         {
-            throw new NotImplementedException();
+            using (ProductManagementDbContext dbContext = new())
+            {
+                Employees = dbContext.Employees.AsNoTracking().ToList().ToObservableCollection<Employee>();
+            };
+            
         }
-
+        
         public void AddEmployee(Employee employee)
         {
-            Employees.Add(employee);
+            using (ProductManagementDbContext dbContext = new())
+            {
+                dbContext.Employees.Add(employee);
+                dbContext.SaveChanges();
+            };
         }
 
         public void EditEmployee(Employee employee)
         {
-            var lastEmployee = Employees.FirstOrDefault(x => x.Id == employee.Id);
-            int index = Employees.IndexOf(lastEmployee);
-            Employees[index] = employee;
+            using (ProductManagementDbContext dbContext = new())
+            {
+                var lastEmployee = dbContext.Employees.First(x=>x.Id.Equals(employee.Id));
+                dbContext.Employees.Update(lastEmployee);
+                dbContext.SaveChanges();
+            };
         }
 
         public void RemoveEmployee(int id)
         {
-            var employee = Employees.FirstOrDefault(x => x.Id == id);
-            Employees.Remove(employee);
-        }
-
-        public int GetNextId()
-        {
-            var maxIndex = Employees.Count != 0 ? Employees.Max(x => x.Id) + 1 : 1;
-            return maxIndex;
+            using (ProductManagementDbContext dbContext = new())
+            {
+                var lastEmployee = dbContext.Employees.First(x => x.Id.Equals(id));
+                dbContext.Employees.Remove(lastEmployee);
+                dbContext.SaveChanges();
+            };
         }
     }
 }

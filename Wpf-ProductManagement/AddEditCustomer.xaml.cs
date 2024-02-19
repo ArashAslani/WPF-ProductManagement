@@ -53,7 +53,6 @@ namespace Wpf_ProductManagement
             {
                 Customer customer = new()
                 {
-                    Id = _customerDataAccess.GetNextId(),
                     FirstName = TBFirstName.Text,
                     LastName = TBLastName.Text,
                     Address = TBAddress.Text,

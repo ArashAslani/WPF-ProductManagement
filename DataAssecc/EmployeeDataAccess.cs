@@ -37,8 +37,7 @@ namespace DataAccess
         {
             using (ProductManagementDbContext dbContext = new())
             {
-                var lastEmployee = dbContext.Employees.First(x=>x.Id.Equals(employee.Id));
-                dbContext.Employees.Update(lastEmployee);
+                dbContext.Employees.Update(employee);
                 dbContext.SaveChanges();
             };
         }

@@ -23,7 +23,13 @@ namespace Wpf_ProductManagement
         {
             InitializeComponent();
             FillData();
+            FillDataGrids();
 
+            
+        }
+
+        private void FillDataGrids()
+        {
             EmployeesDataGrid.ItemsSource = Employees;
             CustomersDataGrid.ItemsSource = Customers;
             ProductsDataGrid.ItemsSource = Products;

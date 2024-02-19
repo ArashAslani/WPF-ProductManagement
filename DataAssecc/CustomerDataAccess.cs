@@ -36,8 +36,8 @@ namespace DataAccess
         {
             using (ProductManagementDbContext dbContext = new())
             {
-                var lastCustomer = dbContext.Customers.First(x => x.Id.Equals(customer.Id));
-                dbContext.Customers.Update(lastCustomer);
+                //var lastCustomer = dbContext.Customers.First(x => x.Id.Equals(customer.Id));
+                dbContext.Customers.Update(customer);
                 dbContext.SaveChanges();
             };
         }

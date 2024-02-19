@@ -17,9 +17,10 @@ namespace DataAccess
 
         public void GetCustomers()
         {
+            Customers.Clear();
             using (ProductManagementDbContext dbContext = new())
             {
-                Customers = dbContext.Customers.AsNoTracking().ToList().ToObservableCollection<Customer>();
+                dbContext.Customers.AsNoTracking().ToList().ForEach(x => Customers.Add(x));
             };
         }
 
@@ -29,16 +30,20 @@ namespace DataAccess
             {
                 dbContext.Customers.Add(customer);
                 dbContext.SaveChanges();
+
+                Customers.Add(dbContext.Customers.OrderBy(x=>x.Id).Last());
             };
+
         }
 
         public void EditCustomer(Customer customer)
         {
             using (ProductManagementDbContext dbContext = new())
             {
-                //var lastCustomer = dbContext.Customers.First(x => x.Id.Equals(customer.Id));
                 dbContext.Customers.Update(customer);
                 dbContext.SaveChanges();
+
+                GetCustomers();
             };
         }
 
@@ -46,9 +51,11 @@ namespace DataAccess
         {
             using (ProductManagementDbContext dbContext = new())
             {
-                var lastCustomer = dbContext.Customers.First(x => x.Id.Equals(id));
-                dbContext.Customers.Remove(lastCustomer);
+                var customer = dbContext.Customers.First(x => x.Id.Equals(id));
+                dbContext.Customers.Remove(customer);
                 dbContext.SaveChanges();
+
+                GetCustomers();
             };
         }
     }

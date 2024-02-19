@@ -48,9 +48,9 @@
                     </WrapPanel>
 
                     <DockPanel Grid.Row="1" Margin="20" HorizontalAlignment="Center">
-                        <Button Name="BtnAddEmployee" Click="BtnAddEmployee_Click" Margin="10" Height="50" Background="LightGreen">Add</Button>
-                        <Button Name="BtnEditEmployee" Click="BtnEditEmployee_Click" Margin="10" Height="50" Background="LightGreen">Edit</Button>
-                        <Button Name="BtnRemoveEmployee" Click="BtnRemoveEmployee_Click" Margin="10" Height="50" Background="LightGreen">Remove</Button>
+                        <Button Name="BtnAddEmployee" Click="BtnAddEmployee_Click" Margin="10" Height="50" Width="100" Background="LightGreen">Add</Button>
+                        <Button Name="BtnEditEmployee" Click="BtnEditEmployee_Click" Margin="10" Height="50" Width="100" Background="LightGreen">Edit</Button>
+                        <Button Name="BtnRemoveEmployee" Click="BtnRemoveEmployee_Click" Margin="10" Height="50" Width="100" Background="LightGreen">Remove</Button>
                     </DockPanel>
                 </Grid>
             </StackPanel>
@@ -73,9 +73,9 @@
                     </WrapPanel>
 
                     <DockPanel Grid.Row="1" Margin="20" HorizontalAlignment="Center">
-                        <Button Name="BtnAddCustomer" Click="BtnAddCustomer_Click" Margin="10" Height="50" Background="LightGreen">Add</Button>
-                        <Button Name="BtnEditCustomer" Click="BtnEditCustomer_Click" Margin="10" Height="50" Background="LightGreen">Edit</Button>
-                        <Button Name="BtnRemoveCustomer" Click="BtnRemoveCustomer_Click" Margin="10" Height="50" Background="LightGreen">Remove</Button>
+                        <Button Name="BtnAddCustomer" Click="BtnAddCustomer_Click" Margin="10" Height="50" Width="100" Background="LightGreen">Add</Button>
+                        <Button Name="BtnEditCustomer" Click="BtnEditCustomer_Click" Margin="10" Height="50" Width="100" Background="LightGreen">Edit</Button>
+                        <Button Name="BtnRemoveCustomer" Click="BtnRemoveCustomer_Click" Margin="10" Height="50" Width="100" Background="LightGreen">Remove</Button>
                     </DockPanel>
                 </Grid>
             </StackPanel>
@@ -95,9 +95,9 @@
                         <Label Name="ProductLable" Margin="2" Content="----"></Label>
                     </WrapPanel>
                     <DockPanel Grid.Row ="1" Margin="20" HorizontalAlignment="Center">
-                        <Button Name="BtnAddProduct" Click="BtnAddProduct_Click" Margin="10" Height="50" Background="LightGreen">Add</Button>
-                        <Button Name="BtnEditProduct" Click="BtnEditProduct_Click" Margin="10" Height="50" Background="LightGreen">Edit</Button>
-                        <Button Name="BtnRemoveProduct" Click="BtnRemoveProduct_Click" Margin="10" Height="50" Background="LightGreen">Remove</Button>
+                        <Button Name="BtnAddProduct" Click="BtnAddProduct_Click" Margin="10" Height="50" Width="100" Background="LightGreen">Add</Button>
+                        <Button Name="BtnEditProduct" Click="BtnEditProduct_Click" Margin="10" Height="50" Width="100" Background="LightGreen">Edit</Button>
+                        <Button Name="BtnRemoveProduct" Click="BtnRemoveProduct_Click" Margin="10" Height="50" Width="100" Background="LightGreen">Remove</Button>
                     </DockPanel>
                 </Grid>
             </StackPanel>

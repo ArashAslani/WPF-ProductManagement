@@ -12,7 +12,7 @@ namespace Wpf_ProductManagement
         readonly ProductDataAccess _productDataAccess = new();
 
         ObservableCollection<Employee> Employees = [];
-        ObservableCollection<Customer> Customers = [];
+        ObservableCollection<Customer> Customers { get; set; }
         ObservableCollection<Product> Products = [];
 
         public Employee CurrentEmployee { get; set; } = new();
@@ -24,8 +24,6 @@ namespace Wpf_ProductManagement
             InitializeComponent();
             FillData();
             FillDataGrids();
-
-            
         }
 
         private void FillDataGrids()

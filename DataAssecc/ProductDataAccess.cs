@@ -19,7 +19,7 @@ namespace DataAccess
         {
             using (ProductManagementDbContext dbContext = new())
             {
-                Products = dbContext.Products.AsNoTracking().ToList().ToObservableCollection<Product>();
+                dbContext.Products.AsNoTracking().ToList().ForEach(x=> Products.Add(x));
             };
         }
 
@@ -29,6 +29,9 @@ namespace DataAccess
             {
                 dbContext.Products.Add(product);
                 dbContext.SaveChanges();
+
+                Products.Add(dbContext.Products.OrderBy(x => x.Id).Last());
+
             };
         }
 
@@ -38,6 +41,8 @@ namespace DataAccess
             {
                 dbContext.Products.Update(product);
                 dbContext.SaveChanges();
+
+                GetProducts();
             };
         }
 
@@ -48,6 +53,8 @@ namespace DataAccess
                 var lastProduct = dbContext.Products.First(x => x.Id == id);
                 dbContext.Products.Remove(lastProduct);
                 dbContext.SaveChanges();
+
+                GetProducts();
             };
         }
     }

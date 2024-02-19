@@ -19,7 +19,7 @@ namespace DataAccess
         {
             using (ProductManagementDbContext dbContext = new())
             {
-                Employees = dbContext.Employees.AsNoTracking().ToList().ToObservableCollection<Employee>();
+                dbContext.Employees.AsNoTracking().ToList().ForEach(x=>Employees.Add(x));
             };
             
         }
@@ -30,6 +30,9 @@ namespace DataAccess
             {
                 dbContext.Employees.Add(employee);
                 dbContext.SaveChanges();
+
+                Employees.Add(dbContext.Employees.OrderBy(x => x.Id).Last());
+
             };
         }
 
@@ -39,6 +42,8 @@ namespace DataAccess
             {
                 dbContext.Employees.Update(employee);
                 dbContext.SaveChanges();
+
+                GetEmployees();
             };
         }
 
@@ -49,6 +54,8 @@ namespace DataAccess
                 var lastEmployee = dbContext.Employees.First(x => x.Id.Equals(id));
                 dbContext.Employees.Remove(lastEmployee);
                 dbContext.SaveChanges();
+
+                GetEmployees();
             };
         }
     }

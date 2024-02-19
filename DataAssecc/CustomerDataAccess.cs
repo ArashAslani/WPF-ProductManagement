@@ -1,34 +1,35 @@
 ﻿using DataAccess.Models;
+using System.Collections.ObjectModel;
 
 namespace DataAccess
 {
     public class CustomerDataAccess
     {
-        public List<Customer> Customers { get; set; } = [];
+        public ObservableCollection<Customer> Customers { get; set; } = [];
 
         public CustomerDataAccess()
         {
             GetCustomers();
         }
 
-        private void GetCustomers()
+        public void GetCustomers()
         {
             throw new NotImplementedException();
         }
 
-        private void AddProduct(Customer customer)
+        public void AddCustomer(Customer customer)
         {
             Customers.Add(customer);
         }
 
-        private void EditProduct(Customer customer)
+        public void EditCustomer(Customer customer)
         {
             var lastCustomer = Customers.FirstOrDefault(x => x.Id == customer.Id);
             int index = Customers.IndexOf(lastCustomer);
             Customers[index] = customer;
         }
 
-        private void RemoveProduct(int id)
+        public void RemoveCustomer(int id)
         {
             var customer = Customers.FirstOrDefault(x => x.Id == id);
             Customers.Remove(customer);

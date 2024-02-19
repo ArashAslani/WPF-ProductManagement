@@ -26,12 +26,4 @@ namespace DataAccess.Models
             return info;
         }
     }
-
-    public enum Department
-    {
-        Production,
-        Sales,
-        Advertisement,
-        Management
-    }
 }

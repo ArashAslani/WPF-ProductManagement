@@ -1,34 +1,36 @@
 ﻿using DataAccess.Models;
+using System.Collections.ObjectModel;
+using System.Diagnostics.Metrics;
 
 namespace DataAccess
 {
     public class EmployeeDataAccess
     {
-        public List<Employee> Employees { get; set; } = [];
+        public ObservableCollection<Employee> Employees { get; set; } = [];
 
         public EmployeeDataAccess()
         {
             GetEmployees();
         }
 
-        private void GetEmployees()
+        public void GetEmployees()
         {
             throw new NotImplementedException();
         }
 
-        private void AddProduct(Employee employee)
+        public void AddEmployee(Employee employee)
         {
             Employees.Add(employee);
         }
 
-        private void EditProduct(Employee employee)
+        public void EditEmployee(Employee employee)
         {
             var lastEmployee = Employees.FirstOrDefault(x => x.Id == employee.Id);
             int index = Employees.IndexOf(lastEmployee);
             Employees[index] = employee;
         }
 
-        private void RemoveProduct(int id)
+        public void RemoveEmployee(int id)
         {
             var employee = Employees.FirstOrDefault(x => x.Id == id);
             Employees.Remove(employee);

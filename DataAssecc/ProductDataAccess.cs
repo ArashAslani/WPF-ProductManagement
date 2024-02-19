@@ -1,10 +1,11 @@
 ﻿using DataAccess.Models;
+using System.Collections.ObjectModel;
 
 namespace DataAccess
 {
     public class ProductDataAccess
     {
-        public List<Product> Products { get; set; } = [];
+        public ObservableCollection<Product> Products { get; set; } = [];
 
         public ProductDataAccess()
         {

@@ -8,8 +8,10 @@
         Title="Product management" Height="700" Width="1200">
     <Grid>
         <Grid.ColumnDefinitions>
+            
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
+            
         </Grid.ColumnDefinitions>
 
         <Border Grid.Column="0" Margin="2" Background="Thistle" Width="250" HorizontalAlignment="Center" BorderThickness="3" BorderBrush="Gray">
@@ -28,13 +30,77 @@
         </Border>
 
         <Border Name="EmployeesPanel" Grid.Column="1" Visibility="Collapsed" Margin="2" Background="IndianRed" HorizontalAlignment="Stretch"  BorderThickness="3" BorderBrush="Gray">
-            <Label FontSize="35" Margin="0,50,0,0" Foreground="#3E454C" FontWeight="Heavy" HorizontalAlignment="Center">WE ARE IN EMPLOYEES</Label>
+            <StackPanel HorizontalAlignment="Stretch" Background="IndianRed">
+                <Label FontSize="35" Margin="0,50,0,0" Foreground="#3E454C" FontWeight="Heavy" HorizontalAlignment="Center">WE ARE IN EMPLOYEES</Label>
+                <DataGrid Name="EmployeesDataGrid" SelectionChanged="EmployeeDataGrid_SelectionChanged" ColumnWidth="*" MinColumnWidth="100" CanUserResizeColumns="True" CanUserAddRows="False" Margin="5"/>
+
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="*"/>
+                        
+                    </Grid.RowDefinitions>
+
+                    <WrapPanel Grid.Row="0" Margin="5">
+                        <Label Margin="2" FontWeight="Bold">Detailed info : </Label>
+                        <Label Name="EmployeeLable" Margin="2" Content="----"></Label>
+                    </WrapPanel>
+
+                    <DockPanel Grid.Row="1" Margin="20" HorizontalAlignment="Center">
+                        <Button Name="BtnAddEmployee" Click="BtnAddEmployee_Click" Margin="10" Height="50" Background="LightGreen">Add</Button>
+                        <Button Name="BtnEditEmployee" Click="BtnEditEmployee_Click" Margin="10" Height="50" Background="LightGreen">Edit</Button>
+                        <Button Name="BtnRemoveEmployee" Click="BtnRemoveEmployee_Click" Margin="10" Height="50" Background="LightGreen">Remove</Button>
+                    </DockPanel>
+                </Grid>
+            </StackPanel>
         </Border>
         <Border Name="CustomersPanel" Grid.Column="1" Visibility="Collapsed" Margin="2" Background="IndianRed" HorizontalAlignment="Stretch"  BorderThickness="3" BorderBrush="Gray">
-            <Label FontSize="35" Margin="0,50,0,0" Foreground="#3E454C" FontWeight="Heavy" HorizontalAlignment="Center">WE ARE IN CUSTOMRES</Label>
+            <StackPanel HorizontalAlignment="Stretch" Background="IndianRed">
+                <Label FontSize="35" Margin="0,50,0,0" Foreground="#3E454C" FontWeight="Heavy" HorizontalAlignment="Center">WE ARE IN CUSTOMRES</Label>
+                <DataGrid Name="CustomersDataGrid" SelectionChanged="CustomersDataGrid_SelectionChanged" ColumnWidth="*" MinColumnWidth="100" CanUserAddRows="False" CanUserResizeColumns="True"/>
+
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="*"/>
+
+                    </Grid.RowDefinitions>
+                    <WrapPanel Grid.Row="0" Margin="5">
+                        <Label Margin="2" FontWeight="Bold">Detailed info : </Label>
+                        <Label Name="CustomerLable" Margin="2" Content="----"></Label>
+                    </WrapPanel>
+
+                    <DockPanel Grid.Row="1" Margin="20" HorizontalAlignment="Center">
+                        <Button Name="BtnAddCustomer" Click="BtnAddCustomer_Click" Margin="10" Height="50" Background="LightGreen">Add</Button>
+                        <Button Name="BtnEditCustomer" Click="BtnEditCustomer_Click" Margin="10" Height="50" Background="LightGreen">Edit</Button>
+                        <Button Name="BtnRemoveCustomer" Click="BtnRemoveCustomer_Click" Margin="10" Height="50" Background="LightGreen">Remove</Button>
+                    </DockPanel>
+                </Grid>
+            </StackPanel>
         </Border>
         <Border Name="ProductsPanel" Grid.Column="1" Visibility="Collapsed" Margin="2" Background="IndianRed" HorizontalAlignment="Stretch"  BorderThickness="3" BorderBrush="Gray">
-            <Label FontSize="35" Margin="0,50,0,0" Foreground="#3E454C" FontWeight="Heavy" HorizontalAlignment="Center">WE ARE IN PRODUCTS</Label>
+            <StackPanel>
+                <Label FontSize="35" Margin="0,50,0,0" Foreground="#3E454C" FontWeight="Heavy" HorizontalAlignment="Center">WE ARE IN PRODUCTS</Label>
+                <DataGrid Name="ProductsDataGrid" SelectionChanged="ProductsDataGrid_SelectionChanged" ColumnWidth="*" MinColumnWidth="150" CanUserAddRows="False" CanUserResizeColumns="True"/>
+
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <WrapPanel Grid.Row="0" Margin="5">
+                        <Label Margin="2" FontWeight="Bold">Detailed info : </Label>
+                        <Label Name="ProductLable" Margin="2" Content="----"></Label>
+                    </WrapPanel>
+                    <DockPanel Grid.Row ="1" Margin="20" HorizontalAlignment="Center">
+                        <Button Name="BtnAddProduct" Click="BtnAddProduct_Click" Margin="10" Height="50" Background="LightGreen">Add</Button>
+                        <Button Name="BtnEditProduct" Click="BtnEditProduct_Click" Margin="10" Height="50" Background="LightGreen">Edit</Button>
+                        <Button Name="BtnRemoveProduct" Click="BtnRemoveProduct_Click" Margin="10" Height="50" Background="LightGreen">Remove</Button>
+                    </DockPanel>
+                </Grid>
+            </StackPanel>
         </Border>
     </Grid>
 </Window>
